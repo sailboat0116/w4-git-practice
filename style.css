@@ -17,105 +17,138 @@ body {
 
 .container {
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-radius: 24px;   /* 更圓潤的邊角 */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* 柔和的陰影 */
   width: 480px;
   max-width: 95vw;
+  height: 90vh; /* 固定高度，看起來像 App 畫面 */
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  border: 4px solid #fff; /* 模擬手機邊框 */
 }
 
 header {
-  /* 練習：把標題列顏色從藍色改成其他顏色 */
-  background: #e8b4b8; /* 櫻花粉 */
-  color: white;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
   padding: 20px 24px;
+  backdrop-filter: blur(10px); /* 毛玻璃效果 */
+  border-bottom: 1px solid rgba(0,0,0,0.05); /* 輕微分隔線 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
 }
 
-header h1 { font-size: 20px; }
-header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+header h1 { font-size: 18px; font-weight: 600; margin: 0; }
+header .subtitle { font-size: 12px; color: #888; margin-top: 2px; }
+.header-titles { flex: 1; }
 
 #chat-box {
-  height: 360px;
+  flex: 1; /* 填滿剩餘空間 */
   overflow-y: auto;
-  padding: 20px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  background-color: #f8f9fa; /* 更淺的對話背景 */
 }
 
 .message {
   max-width: 75%;
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 14px;
-  line-height: 1.5;
+  padding: 12px 16px;
+  border-radius: 18px; /* App 原角的對話泡泡 */
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
 }
 
 .message.bot {
-  background: #f9e1e5; /* 淺櫻花色 */
-  color: #5a4a4d;
+  background: white;
+  color: #333;
   align-self: flex-start;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px; /* 對話泡泡的小尾巴 */
 }
 
 .message.user {
-  /* 練習：把使用者訊息顏色從綠色改成你喜歡的顏色 */
-  background: #d98594; /* 胭脂櫻花色 */
+  background: linear-gradient(135deg, #007aff, #0056b3); /* 蘋果系藍色漸層 */
   color: white;
   align-self: flex-end;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px; /* 對話泡泡的小尾巴 */
 }
 
 .input-area {
   display: flex;
-  padding: 16px;
-  gap: 10px;
-  border-top: 1px solid #eee;
+  padding: 16px 20px 24px 20px; /* 底部留白，模擬手機 Home Bar */
+  gap: 12px;
+  background: white;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.02);
 }
 
 .input-area input {
   flex: 1;
-  padding: 10px 14px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 12px 18px;
+  border: 1px solid #e0e0e0;
+  border-radius: 24px; /* 膠囊形輸入框 */
+  font-size: 15px;
   outline: none;
+  background-color: #f4f5f7;
+  transition: all 0.2s ease;
 }
 
 .input-area input:focus {
-  border-color: #e8b4b8;
+  border-color: #007aff;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(0,122,255,0.1);
 }
 
 .input-area button {
-  /* 練習：把按鈕顏色改成你喜歡的顏色 */
-  background: linear-gradient(90deg, #e8b4b8, #1a73e8, #e84393); /* 融合櫻花粉、深藍與亮粉色 */
+  background: #007aff; /* 蘋果藍 */
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  width: 44px; /* 圓形送出按鈕 */
+  height: 44px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.1s ease;
 }
 
 .input-area button:hover {
-  opacity: 0.85;
+  transform: scale(1.05); /* 輕微放大動畫 */
+  opacity: 0.9;
+}
+
+.send-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 /* ===== feature/dark-mode 新增 ===== */
 .dark-toggle {
-  margin-top: 8px;
-  background: rgba(255,255,255,0.2);
+  background: #f0f0f5;
   border: none;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 6px;
+  color: #333;
+  padding: 6px 14px;
+  border-radius: 16px;
   cursor: pointer;
   font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
-body.dark { background-color: #3b2c30; /* 暗紅豆色 */ }
-body.dark .container { background: #4d3a3f; color: #e8dadd; }
-body.dark header { background: #362629; }
-body.dark .message.bot { background: #5a454b; color: #e8dadd; }
-body.dark .input-area { border-top-color: #5a454b; }
-body.dark .input-area input { background: #5a454b; color: #e8dadd; border-color: #6e545b; }
+body.dark { background-color: #121212; }
+body.dark .container { background: #1c1c1e; border-color: #333; }
+body.dark header { background: rgba(28,28,30,0.9); color: white; border-bottom-color: #2c2c2e; }
+body.dark .header-titles .subtitle { color: #a1a1aa; }
+body.dark .dark-toggle { background: #2c2c2e; color: white; }
+body.dark #chat-box { background-color: #000000; }
+body.dark .message.bot { background: #2c2c2e; color: #e5e5ea; }
+body.dark .input-area { background: #1c1c1e; border-top-color: #2c2c2e; box-shadow: none; }
+body.dark .input-area input { background: #2c2c2e; color: white; border-color: transparent; }
+body.dark .input-area input:focus { background: #3a3a3c; }
