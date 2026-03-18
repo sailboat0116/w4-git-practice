@@ -9,10 +9,11 @@
 
   <div class="container">
     <header>
-      <h1>🌸 櫻花粉 Chatbot</h1>
-      <!-- 練習一：把標題改成你們組的名字 -->
-      <p class="subtitle">櫻色和風對話</p>
-      <button class="dark-toggle" onclick="document.body.classList.toggle('dark')">🌙 深色模式</button>
+      <div class="header-titles">
+        <h1>💬 現代風 Chat</h1>
+        <p class="subtitle">iOS Style 對話紀錄</p>
+      </div>
+      <button class="dark-toggle" onclick="document.body.classList.toggle('dark')">切換深色</button>
     </header>
 
     <div id="chat-box">
@@ -22,9 +23,12 @@
     </div>
 
     <div class="input-area">
-      <input id="user-input" type="text" placeholder="輸入訊息...">
-      <!-- 練習二：把按鈕文字改成你喜歡的文字 -->
-      <button onclick="sendMessage()">送信</button>
+      <input id="user-input" type="text" placeholder="iMessage...">
+      <button onclick="sendMessage()" aria-label="傳送">
+        <svg class="send-icon" viewBox="0 0 24 24">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+        </svg>
+      </button>
     </div>
   </div>
 
